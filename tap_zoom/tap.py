@@ -79,6 +79,7 @@ class TapZoom(Tap):
             streams.UsersStream(self),
             streams.MeetingsStream(self),
             streams.RecordingsStream(self),
+            streams.TranscriptsStream(self),
         ]
 
 

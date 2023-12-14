@@ -1,0 +1,46 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+        "transcript": {
+            "type": "string"
+        },
+        "download_url": {
+            "type": "string"
+        },
+        "file_size": {
+            "type": "integer"
+        },
+        "file_extension": {
+            "type": "string"
+        },
+        "id": {
+            "type": "string"
+        },
+        "meeting_id": {
+            "type": "string"
+        },
+        "recording_end": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "recording_start": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "status": {
+            "type": "string"
+        }
+    },
+    "required": [
+        "transcript",
+        "download_url",
+        "file_size",
+        "file_extension",
+        "id",
+        "meeting_id",
+        "recording_end",
+        "recording_start",
+        "status"
+    ]
+}

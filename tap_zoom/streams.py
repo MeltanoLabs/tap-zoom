@@ -5,10 +5,10 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Optional
 
-from singer_sdk._singerlib import Schema
-from singer_sdk.plugin_base import PluginBase as TapBaseClass
-
+from singer_sdk import Stream
+import requests
 from tap_zoom.client import ZoomStream
+from tap_zoom.auth import ZoomOAuthAuthenticator
 from typing import Iterable, Any
 import datetime
 from dateutil.relativedelta import relativedelta
@@ -140,3 +140,45 @@ class RecordingsStream(ZoomStream):
             base_parms["from"] = self._from_date
             base_parms["to"] = self._to_date
         return base_parms
+
+    def get_child_context(self, record: dict, context: Optional[dict]) -> dict:
+        """Return a context dictionary for child streams."""
+        return {
+            "recording_files": record["recording_files"],
+            "authenticator": self.authenticator,
+        }
+
+class TranscriptsStream(Stream):
+    """List transcripts stream."""
+
+    name = "transcripts"
+    parent_stream_type = RecordingsStream
+    primary_keys = ["id"]
+    replication_key = None
+    schema_filepath = SCHEMAS_DIR / "transcripts.json"
+
+    def _get_transcripts(self, download_url: str, authenticator: ZoomOAuthAuthenticator) -> str:
+        """Return a transcript string."""
+        session = requests.Session()
+        session.auth = authenticator
+        data = session.get(
+            download_url
+        )
+        return data.content.decode('utf-8')
+
+    def get_records(self, context: dict | None) -> Iterable[dict | tuple[dict, dict]]:
+        recording_files = context["recording_files"]
+        for file in recording_files:
+            if file["file_type"] == "TRANSCRIPT":
+                yield {
+                    "id": file["id"],
+                    "transcript": self._get_transcripts(file["download_url"], context["authenticator"]),
+                    "meeting_id": file["meeting_id"],
+                    "recording_start": file["recording_start"],
+                    "recording_end": file["recording_end"],
+                    "download_url": file["download_url"],
+                    "file_extension": file["file_extension"],
+                    "status": file["status"],
+                    "file_size": file["file_size"],
+                }
+        return []
