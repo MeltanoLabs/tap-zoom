@@ -2,7 +2,7 @@
 
 `tap-zoom` is a Singer tap for [Zoom](https://zoom.com/).
 
-Built with the [Meltano Singer SDK](https://sdk.meltano.com).
+Built with the [Meltano Tap SDK](https://sdk.meltano.com) for Singer Taps and the [Zoom API Reference](https://developers.zoom.us/docs/api/)
 
 ## Capabilities
 
