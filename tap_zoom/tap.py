@@ -72,6 +72,8 @@ class TapZoom(Tap):
         """
         return [
             streams.UsersStream(self),
+            streams.MeetingsStream(self),
+            streams.RecordingsStream(self),
         ]
 
 
