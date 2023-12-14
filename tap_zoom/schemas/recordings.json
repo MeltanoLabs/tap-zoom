@@ -18,7 +18,8 @@
       "type": "integer"
     },
     "start_time": {
-      "type": "string"
+      "type": "string",
+      "format": "date-time"
     },
     "topic": {
       "type": "string"
@@ -27,7 +28,7 @@
       "type": "integer"
     },
     "type": {
-      "type": "string"
+      "type": "integer"
     },
     "uuid": {
       "type": "string"
@@ -41,13 +42,19 @@
           "type": "object",
           "properties": {
             "deleted_time": {
-              "type": "string"
+              "type": [
+                "string",
+                "null"
+              ]
             },
             "download_url": {
               "type": "string"
             },
             "file_path": {
-              "type": "string"
+              "type": [
+                "string",
+                "null"
+              ]
             },
             "file_size": {
               "type": "integer"
@@ -65,13 +72,18 @@
               "type": "string"
             },
             "play_url": {
-              "type": "string"
+              "type": [
+                "string",
+                "null"
+              ]
             },
             "recording_end": {
-              "type": "string"
+              "type": "string",
+              "format": "date-time"
             },
             "recording_start": {
-              "type": "string"
+              "type": "string",
+              "format": "date-time"
             },
             "recording_type": {
               "type": "string"
@@ -81,15 +93,12 @@
             }
           },
           "required": [
-            "deleted_time",
             "download_url",
-            "file_path",
             "file_size",
             "file_type",
             "file_extension",
             "id",
             "meeting_id",
-            "play_url",
             "recording_end",
             "recording_start",
             "recording_type",

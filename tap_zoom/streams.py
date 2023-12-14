@@ -125,7 +125,6 @@ class RecordingsStream(ZoomStream):
                 for (start, end) in ranges:
                     self._from_date = start
                     self._to_date = end
-                    # set an object var that get_url_params uses if thats called after this
                     yield from super().get_records(context)
         else:
             yield from super().get_records(context)
