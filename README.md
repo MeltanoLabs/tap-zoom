@@ -1,39 +1,8 @@
-# tap-zoom
+# `tap-zoom`
 
 `tap-zoom` is a Singer tap for [Zoom](https://zoom.com/).
 
-Built with the [Meltano Tap SDK](https://sdk.meltano.com) for Singer Taps and the [Zoom API Reference](https://developers.zoom.us/docs/api/)
-
-<!--
-
-Developer TODO: Update the below as needed to correctly describe the install procedure. For instance, if you do not have a PyPi repo, or if you want users to directly install from your git repo, you can modify this step as appropriate.
-
-## Installation
-
-Install from PyPi:
-
-```bash
-pipx install tap-zoom
-```
-
-Install from GitHub:
-
-```bash
-pipx install git+https://github.com/ORG_NAME/tap-zoom.git@main
-```
-
--->
-
-
-<!--
-Developer TODO: Provide a list of config options accepted by the tap.
-
-This section can be created by copy-pasting the CLI output from:
-
-```
-tap-zoom --about --format=markdown
-```
--->
+Built with the [Meltano Singer SDK](https://sdk.meltano.com).
 
 ## Capabilities
 
@@ -52,13 +21,14 @@ tap-zoom --about --format=markdown
 | client_id           | True     | None    | The OAuth application's Client ID. |
 | client_secret       | True     | None    | The OAuth application's Client Secret. |
 | api_url             | False    | None    | Override the url for the API service. |
-| stream_config       | False    | None    | A list of dictionaries for specifing additional configurations for a specified stream. |
+| start_date          | False    | None    | The earliest record date to sync |
+| stream_config       | False    | None    | A list of dictionaries for specifing additional             configurations for a specified stream. |
+| stream_maps         | False    | None    | Config object for stream maps capability. For more information check out [Stream Maps](https://sdk.meltano.com/en/latest/stream_maps.html). |
+| stream_map_config   | False    | None    | User-defined config values to be used within map expressions. |
+| flattening_enabled  | False    | None    | 'True' to enable schema flattening and automatically expand nested properties. |
+| flattening_max_depth| False    | None    | The max depth to flatten schemas. |
 
-A full list of supported settings and capabilities for this tap is available by running:
-
-```bash
-tap-zoom --about
-```
+A full list of supported settings and capabilities is available by running: `tap-zoom --about`
 
 ### Settings for Specific Streams
 
