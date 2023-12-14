@@ -2,149 +2,114 @@
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
   "properties": {
-    "from": {
+    "account_id": {
       "type": "string"
     },
-    "to": {
+    "duration": {
+      "type": "integer"
+    },
+    "host_id": {
       "type": "string"
     },
-    "next_page_token": {
+    "id": {
+      "type": "integer"
+    },
+    "recording_count": {
+      "type": "integer"
+    },
+    "start_time": {
       "type": "string"
     },
-    "page_count": {
+    "topic": {
+      "type": "string"
+    },
+    "total_size": {
       "type": "integer"
     },
-    "page_size": {
-      "type": "integer"
+    "type": {
+      "type": "string"
     },
-    "total_records": {
-      "type": "integer"
+    "uuid": {
+      "type": "string"
     },
-    "meetings": {
+    "recording_play_passcode": {
+      "type": "string"
+    },
+    "recording_files": {
       "type": "array",
       "items": {
           "type": "object",
           "properties": {
-            "account_id": {
+            "deleted_time": {
               "type": "string"
             },
-            "duration": {
+            "download_url": {
+              "type": "string"
+            },
+            "file_path": {
+              "type": "string"
+            },
+            "file_size": {
               "type": "integer"
             },
-            "host_id": {
+            "file_type": {
+              "type": "string"
+            },
+            "file_extension": {
               "type": "string"
             },
             "id": {
-              "type": "integer"
-            },
-            "recording_count": {
-              "type": "integer"
-            },
-            "start_time": {
               "type": "string"
             },
-            "topic": {
+            "meeting_id": {
               "type": "string"
             },
-            "total_size": {
-              "type": "integer"
-            },
-            "type": {
+            "play_url": {
               "type": "string"
             },
-            "uuid": {
+            "recording_end": {
               "type": "string"
             },
-            "recording_play_passcode": {
+            "recording_start": {
               "type": "string"
             },
-            "recording_files": {
-              "type": "array",
-              "items": {
-                  "type": "object",
-                  "properties": {
-                    "deleted_time": {
-                      "type": "string"
-                    },
-                    "download_url": {
-                      "type": "string"
-                    },
-                    "file_path": {
-                      "type": "string"
-                    },
-                    "file_size": {
-                      "type": "integer"
-                    },
-                    "file_type": {
-                      "type": "string"
-                    },
-                    "file_extension": {
-                      "type": "string"
-                    },
-                    "id": {
-                      "type": "string"
-                    },
-                    "meeting_id": {
-                      "type": "string"
-                    },
-                    "play_url": {
-                      "type": "string"
-                    },
-                    "recording_end": {
-                      "type": "string"
-                    },
-                    "recording_start": {
-                      "type": "string"
-                    },
-                    "recording_type": {
-                      "type": "string"
-                    },
-                    "status": {
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "deleted_time",
-                    "download_url",
-                    "file_path",
-                    "file_size",
-                    "file_type",
-                    "file_extension",
-                    "id",
-                    "meeting_id",
-                    "play_url",
-                    "recording_end",
-                    "recording_start",
-                    "recording_type",
-                    "status"
-                  ]
-                }
+            "recording_type": {
+              "type": "string"
+            },
+            "status": {
+              "type": "string"
             }
           },
           "required": [
-            "account_id",
-            "duration",
-            "host_id",
+            "deleted_time",
+            "download_url",
+            "file_path",
+            "file_size",
+            "file_type",
+            "file_extension",
             "id",
-            "recording_count",
-            "start_time",
-            "topic",
-            "total_size",
-            "type",
-            "uuid",
-            "recording_play_passcode",
-            "recording_files"
+            "meeting_id",
+            "play_url",
+            "recording_end",
+            "recording_start",
+            "recording_type",
+            "status"
           ]
         }
     }
   },
   "required": [
-    "from",
-    "to",
-    "next_page_token",
-    "page_count",
-    "page_size",
-    "total_records",
-    "meetings"
+    "account_id",
+    "duration",
+    "host_id",
+    "id",
+    "recording_count",
+    "start_time",
+    "topic",
+    "total_size",
+    "type",
+    "uuid",
+    "recording_play_passcode",
+    "recording_files"
   ]
 }

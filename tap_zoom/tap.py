@@ -41,6 +41,11 @@ class TapZoom(Tap):
             description="Override the url for the API service.",
         ),
         th.Property(
+            "start_date",
+            th.DateTimeType,
+            description="The earliest record date to sync",
+        ),
+        th.Property(
             "stream_config",
             th.ArrayType(
                 th.PropertiesList(

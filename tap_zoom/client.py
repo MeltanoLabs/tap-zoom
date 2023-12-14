@@ -52,7 +52,7 @@ class ZoomStream(RESTStream):
         # return JSONPathPaginator(self.next_page_token_jsonpath)
         return ZoomPaginator(self.next_page_token_jsonpath)
 
-    def _get_strem_config(self) -> dict:
+    def _get_stream_config(self) -> dict:
         """Get parameters set in config."""
         config: dict = {}
 
@@ -68,7 +68,7 @@ class ZoomStream(RESTStream):
         return stream_config
 
     def _get_stream_params(self) -> dict:
-        stream_params = self._get_strem_config().get("parameters", "")
+        stream_params = self._get_stream_config().get("parameters", "")
         return {qry[0]: qry[1] for qry in parse_qsl(stream_params.lstrip("?"))}
 
     def get_url_params(
@@ -91,6 +91,9 @@ class ZoomStream(RESTStream):
         page_size = self.config.get("page_size")
         if page_size:
             params["page_size"] = page_size
+
+        if self.config.get("start_date"):
+            params["from"] = self.config.get("start_date")
 
         # Stream Params
         stream_params = self._get_stream_params()
